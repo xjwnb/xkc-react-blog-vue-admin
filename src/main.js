@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 12:51:52
- * @LastEditTime: 2021-02-06 15:35:44
+ * @LastEditTime: 2021-02-06 16:28:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\main.js
@@ -13,6 +13,7 @@ import store from './store'
 // plugin
 // element-ui
 import element from "@/plugin/element";
+console.log(element)
 Vue.use(element);
 
 // 原型
