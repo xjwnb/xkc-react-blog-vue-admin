@@ -1,9 +1,13 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-02-06 12:51:52
+ * @LastEditTime: 2021-02-06 15:21:38
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \xkc-react-blog-vue-admin\src\App.vue
+-->
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
