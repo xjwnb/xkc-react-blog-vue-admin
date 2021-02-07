@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-06 13:57:34
- * @LastEditTime: 2021-02-06 17:17:20
+ * @LastEditTime: 2021-02-07 15:09:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\login\index.vue
@@ -40,6 +40,8 @@
 <script>
 // 请求
 import { login } from "@/api/login";
+// store
+import { LOGIN } from "@/const/store/actions/user";
 
 export default {
   name: "Login",
@@ -58,8 +60,8 @@ export default {
     };
     return {
       loginForm: {
-        username: "",
-        password: "",
+        username: "小卡车",
+        password: "171717ong",
       },
       rules: {
         username: [
@@ -81,13 +83,16 @@ export default {
   mounted() {},
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(async (valid) => {
         if (valid) {
-          login(this.loginForm).then(res => {
-            console.log(res);
-          })
+          try {
+            await this.$store.dispatch(`user/${LOGIN}`, this.loginForm)
+            this.$router.push({path: "/"});
+          } catch(err) {
+            return ;
+          }
+    
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
