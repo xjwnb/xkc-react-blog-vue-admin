@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 15:30:59
- * @LastEditTime: 2021-02-07 17:27:49
+ * @LastEditTime: 2021-02-08 15:43:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\plugin\element\index.js
@@ -19,6 +19,8 @@ import {
   MenuItem,
   MenuItemGroup,
   Submenu,
+  Upload,
+
 
   // plugin
   Message,
@@ -38,6 +40,7 @@ const element = {
     Vue.use(MenuItem);
     Vue.use(MenuItemGroup);
     Vue.use(Submenu);
+    Vue.use(Upload);
 
     // plugin
     Vue.prototype.$message = Message;
