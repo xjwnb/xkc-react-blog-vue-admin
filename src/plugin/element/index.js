@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 15:30:59
- * @LastEditTime: 2021-02-08 15:43:33
+ * @LastEditTime: 2021-02-09 12:40:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\plugin\element\index.js
@@ -20,6 +20,8 @@ import {
   MenuItemGroup,
   Submenu,
   Upload,
+  ColorPicker,
+  Tag,
 
 
   // plugin
@@ -41,6 +43,8 @@ const element = {
     Vue.use(MenuItemGroup);
     Vue.use(Submenu);
     Vue.use(Upload);
+    Vue.use(ColorPicker);
+    Vue.use(Tag);
 
     // plugin
     Vue.prototype.$message = Message;

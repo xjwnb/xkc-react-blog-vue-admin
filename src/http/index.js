@@ -10,7 +10,7 @@ import axios from "axios";
 import { Message } from "element-ui";
 // token util
 import { getToken, setToken, removeToken } from "@/utils/token";
-import store from '@/store';
+import store from "@/store";
 import { REMOVE_TOKEN } from "@/const/store/mutations/user";
 
 const service = axios.create({
@@ -52,9 +52,9 @@ service.interceptors.response.use(
         type: "warning",
         message: `${code} —— ${msg}`
       });
-    } 
+    }
     // token 失效
-    if (code && (code === 10011 || code === 10010)){
+    if (code && (code === 10011 || code === 10010)) {
       // 删除 token
       removeToken();
       store.commit(`user/${REMOVE_TOKEN}`);
@@ -64,6 +64,10 @@ service.interceptors.response.use(
   },
   err => {
     console.log("interceptors.response err", err);
+    // 删除 token
+    removeToken();
+    store.commit(`user/${REMOVE_TOKEN}`);
+    location.reload();
     return Promise.reject(err);
   }
 );

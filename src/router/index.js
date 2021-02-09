@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 12:51:52
- * @LastEditTime: 2021-02-07 18:07:46
+ * @LastEditTime: 2021-02-08 22:29:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\router\index.js
@@ -32,6 +32,11 @@ const routes = [
         name: "BlogInfo",
         component: () => import(/* webpackChunkName: "BlogInfo" */ "@/views/BlogInfo/index.vue")
         
+      },
+      {
+        path: "/tags",
+        name: "Tags",
+        component: () => import(/* webpackChunkName: "Tags"*/ "@/views/Tags/index.vue")
       }
     ]
   },
