@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-07 18:07:18
- * @LastEditTime: 2021-02-10 19:50:32
+ * @LastEditTime: 2021-02-10 21:22:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\BlogInfo\index.vue
@@ -16,11 +16,11 @@
     >
       <!-- 标题 -->
       <el-form-item label="标题" prop="title">
-        <el-input v-model="blogForm.title"></el-input>
+        <el-input placeholder="标题" v-model="blogForm.title"></el-input>
       </el-form-item>
       <!-- 作者 -->
       <el-form-item label="作者" prop="name">
-        <el-input v-model="blogForm.name"></el-input>
+        <el-input placeholder="作者" v-model="blogForm.name"></el-input>
       </el-form-item>
       <!-- 发布时间 -->
       <el-form-item label="发布时间" prop="time">
@@ -240,7 +240,6 @@ export default {
   },
   created() {},
   async mounted() {
-    console.log(this.$refs.toastuiEditor);
     let tagsInfo;
     // 获取标签信息
     try {
