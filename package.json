@@ -21,6 +21,7 @@
     "highlight.js": "^10.6.0",
     "js-cookie": "^2.2.1",
     "less": "^4.1.1",
+    "mavon-editor": "^2.9.1",
     "moment": "^2.29.1",
     "tui-editor": "^1.4.10",
     "vue": "^2.6.11",

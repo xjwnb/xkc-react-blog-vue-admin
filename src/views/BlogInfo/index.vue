@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-07 18:07:18
- * @LastEditTime: 2021-02-10 12:16:24
+ * @LastEditTime: 2021-02-10 19:50:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\BlogInfo\index.vue
@@ -87,7 +87,7 @@
         </el-tag>
       </el-form-item>
       <!-- 内容 -->
-      <el-form-item label="内容" prop="content">
+      <!-- <el-form-item label="内容" prop="content">
         <editor
           ref="toastuiEditor"
           height="500px"
@@ -95,6 +95,15 @@
           previewStyle="vertical"
           @change="changeEditorHandle"
           language="zh-CN"
+        />
+      </el-form-item> -->
+      <el-form-item label="内容" prop="content">
+        <mavon-editor
+          class="mavonEditor-class"
+          :toolbars="toolbars"
+          v-model="blogForm.content"
+          ref="mavonEditor"
+          @imgAdd="mavonEditorImgAdd"
         />
       </el-form-item>
       <el-form-item>
@@ -117,27 +126,26 @@ import { action } from "@/const/oss/ossData";
 import { client } from "@/utils/oss";
 // 文件名称
 import { getFileName } from "@/utils/fileName";
-// 组件
-import MarkdownEditor from '@/components/MarkdownEditor'
+import toolbars from "@/const/markdown/mavonEditorToolbars";
 // vue-editor
 // import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight";
-import 'highlight.js/styles/github.css';
+/* import "highlight.js/styles/github.css";
 import "codemirror/lib/codemirror.css";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import hljs from "highlight.js";
-import 'tui-color-picker/dist/tui-color-picker.css';
-import colorSyntax from '@toast-ui/editor-plugin-color-syntax'; 
+import "tui-color-picker/dist/tui-color-picker.css";
+import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "tui-editor/dist/tui-editor.css";
 import "tui-editor/dist/tui-editor-contents.css";
 import "codemirror/lib/codemirror.css";
 import "highlight.js/styles/github.css";
-import { Editor } from "@toast-ui/vue-editor";
+import { Editor } from "@toast-ui/vue-editor"; */
 
 export default {
   name: "BlogInfo",
   components: {
-    Editor,
+    // Editor,
   },
   data() {
     return {
@@ -219,17 +227,20 @@ export default {
       }, */
       time: "",
       tag: [],
+      html: "",
+      markdownContent: "",
+      toolbars: toolbars,
     };
   },
   watch: {},
   computed: {
     language() {
-      return this.languageTypeList['zh']
-    }
+      return this.languageTypeList["zh"];
+    },
   },
   created() {},
   async mounted() {
-    console.log(this.$refs.toastuiEditor)
+    console.log(this.$refs.toastuiEditor);
     let tagsInfo;
     // 获取标签信息
     try {
@@ -311,6 +322,15 @@ export default {
                   type: "success",
                   message: res.data.msg,
                 });
+                this.blogForm = {
+                  title: "",
+                  name: "",
+                  time: "",
+                  description_info: "",
+                  picture: "",
+                  tag: [],
+                  content: "",
+                };
               }
             })
             .catch((err) => {
@@ -334,9 +354,24 @@ export default {
     },
     // getMarkdownHtml
     getMarkdownHtml() {
-      this.html = this.$refs.markdownEditor.getHtml()
+      this.html = this.$refs.markdownEditor.getHtml();
       console.log(this.html);
-    }
+    },
+    subMarkdownHandle() {
+      console.log(this.$refs.blogMarkdown.getHtml());
+    },
+    // 上传图片
+    async mavonEditorImgAdd(pos, file) {
+      console.log(pos, file);
+      let name = file.name;
+      const fileName = getFileName("blog_pricture", name);
+      try {
+        const putFileResult = await client.put(fileName, file);
+        this.$refs.mavonEditor.$img2Url(pos, putFileResult.url);
+      } catch (err) {
+        console.log(err);
+      }
+    },
   },
 };
 </script>
@@ -360,5 +395,10 @@ export default {
   height: 178px;
   line-height: 178px;
   text-align: center;
+}
+
+/* 编辑器 */
+.mavonEditor-class {
+  min-height: 600px;
 }
 </style>

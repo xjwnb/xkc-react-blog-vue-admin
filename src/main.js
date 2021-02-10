@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 12:51:52
- * @LastEditTime: 2021-02-10 01:52:51
+ * @LastEditTime: 2021-02-10 17:19:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\main.js
@@ -17,6 +17,11 @@ import { getToken } from "@/utils/token"
 // element-ui
 import element from "@/plugin/element";
 Vue.use(element);
+
+// mavonEditor
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+Vue.use(mavonEditor);
 
 // markdown 高亮
 

@@ -18,3 +18,4 @@ b59c1b6e96f89020cf18251047f82a1aea8250c4	{"key":"make-fetch-happen:request-cache
 62e46899daadd46ee2abfe2205a9dbe6b16a29b0	{"key":"make-fetch-happen:request-cache:https://registry.npm.taobao.org/-/npm/v1/security/audits/quick","integrity":null,"time":1612900646197}
 65acd792663d35893c88190f51f4707ebc40e451	{"key":"make-fetch-happen:request-cache:https://registry.npm.taobao.org/-/npm/v1/security/audits/quick","integrity":null,"time":1612927206241}
 94d8aaa4929dce026fbb87ffbda4caa112688976	{"key":"make-fetch-happen:request-cache:https://registry.npm.taobao.org/-/npm/v1/security/audits/quick","integrity":null,"time":1612927405152}
+6b8cfdcebca6889f14591d141706813d2dd9e2d1	{"key":"make-fetch-happen:request-cache:https://registry.npm.taobao.org/-/npm/v1/security/audits/quick","integrity":null,"time":1612948037637}
