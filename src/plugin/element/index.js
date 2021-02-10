@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 15:30:59
- * @LastEditTime: 2021-02-09 12:40:27
+ * @LastEditTime: 2021-02-09 20:07:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\plugin\element\index.js
@@ -22,6 +22,9 @@ import {
   Upload,
   ColorPicker,
   Tag,
+  DatePicker,
+  Select,
+  Option,
 
 
   // plugin
@@ -45,6 +48,9 @@ const element = {
     Vue.use(Upload);
     Vue.use(ColorPicker);
     Vue.use(Tag);
+    Vue.use(DatePicker);
+    Vue.use(Select);
+    Vue.use(Option);
 
     // plugin
     Vue.prototype.$message = Message;

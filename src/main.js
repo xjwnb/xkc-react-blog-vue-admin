@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 12:51:52
- * @LastEditTime: 2021-02-07 15:46:18
+ * @LastEditTime: 2021-02-10 01:52:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\main.js
@@ -17,6 +17,13 @@ import { getToken } from "@/utils/token"
 // element-ui
 import element from "@/plugin/element";
 Vue.use(element);
+
+// markdown 高亮
+
+// moment
+import moment from "moment";
+Vue.prototype.$moment = moment;
+
 
 // 原型
 Vue.prototype.$store = store;
