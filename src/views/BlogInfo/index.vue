@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-07 18:07:18
- * @LastEditTime: 2021-02-10 21:22:03
+ * @LastEditTime: 2021-02-11 21:59:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\BlogInfo\index.vue
 -->
 <template>
-  <div>
+  <div class="blog-info">
     <el-form
       label-width="100px"
       :model="blogForm"
@@ -96,6 +96,7 @@
           @change="changeEditorHandle"
           language="zh-CN"
         />
+        
       </el-form-item> -->
       <el-form-item label="内容" prop="content">
         <mavon-editor
@@ -104,6 +105,7 @@
           v-model="blogForm.content"
           ref="mavonEditor"
           @imgAdd="mavonEditorImgAdd"
+          @change="mavonChangeHandle"
         />
       </el-form-item>
       <el-form-item>
@@ -158,6 +160,7 @@ export default {
         picture: "",
         tag: [],
         content: "",
+        htmlContent: "",
       },
       blogRules: {
         title: [
@@ -301,6 +304,7 @@ export default {
     // markdown change 事件
     changeEditorHandle() {
       let htmlResult = this.getHtml();
+      console.log(htmlResult);
       this.blogForm.content = htmlResult;
     },
     // editor html
@@ -371,6 +375,10 @@ export default {
         console.log(err);
       }
     },
+    // mavon Change 事件
+    mavonChangeHandle(val, render) {
+      this.blogForm.htmlContent = render;
+    }
   },
 };
 </script>

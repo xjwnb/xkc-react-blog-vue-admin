@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 15:30:59
- * @LastEditTime: 2021-02-09 20:07:06
+ * @LastEditTime: 2021-02-11 14:09:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\plugin\element\index.js
@@ -25,6 +25,10 @@ import {
   DatePicker,
   Select,
   Option,
+  Table,
+  TableColumn,
+  Image,
+  Drawer,
 
 
   // plugin
@@ -51,6 +55,10 @@ const element = {
     Vue.use(DatePicker);
     Vue.use(Select);
     Vue.use(Option);
+    Vue.use(Table);
+    Vue.use(TableColumn);
+    Vue.use(Image);
+    Vue.use(Drawer);
 
     // plugin
     Vue.prototype.$message = Message;

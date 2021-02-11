@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-07 17:40:15
- * @LastEditTime: 2021-02-10 14:48:56
+ * @LastEditTime: 2021-02-10 21:27:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\const\Nav\asideNav.js
@@ -26,6 +26,13 @@ export const navbarList = [
     path: "/tags",
     icon: "",
     title: "标签",
+    children: null,
+  },
+  {
+    id: "4",
+    path: "/blogAdmin",
+    icon: "",
+    title: "博客管理",
     children: null,
   }
 /*   {
