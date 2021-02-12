@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-10 02:29:11
- * @LastEditTime: 2021-02-11 23:13:49
+ * @LastEditTime: 2021-02-12 19:26:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\api\blog.js
@@ -36,6 +36,24 @@ export function updateBlogInfo(blogInfo) {
     method: "post",
     data: {
       blogInfo
+    }
+  })
+}
+
+// 博客表数据数量
+export function getBlogInfoCount() {
+  return request({
+    url: "/admin/getBlogInfoCount"
+  })
+}
+
+// 删除博客信息
+export function deleteBlogInfo(id) {
+  return request({
+    url: "/admin/deleteBlogInfo",
+    method: "post",
+    data: {
+      id
     }
   })
 }

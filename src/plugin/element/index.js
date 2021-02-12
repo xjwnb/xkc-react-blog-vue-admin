@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 15:30:59
- * @LastEditTime: 2021-02-11 14:09:38
+ * @LastEditTime: 2021-02-12 19:11:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\plugin\element\index.js
@@ -29,10 +29,12 @@ import {
   TableColumn,
   Image,
   Drawer,
+  Pagination,
 
 
   // plugin
   Message,
+  MessageBox,
 } from "element-ui";
 
 const element = {
@@ -59,9 +61,11 @@ const element = {
     Vue.use(TableColumn);
     Vue.use(Image);
     Vue.use(Drawer);
+    Vue.use(Pagination);
 
     // plugin
     Vue.prototype.$message = Message;
+    Vue.prototype.$confirm = MessageBox.confirm;
   }
 };
 

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-10 21:25:45
- * @LastEditTime: 2021-02-12 00:19:52
+ * @LastEditTime: 2021-02-12 19:31:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\BlogAdmin\index.vue
@@ -50,6 +50,16 @@
         </template>
       </el-table-column>
     </el-table>
+    <!-- 分页 -->
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="blogInfoCount"
+      :page-size="10"
+      :current-page.sync="currentPage"
+      @current-change="currentPageChangehandle"
+    >
+    </el-pagination>
     <!-- 编辑抽屉 -->
     <el-drawer
       title="编辑博客"
@@ -178,7 +188,13 @@
 
 <script>
 // 请求
-import { getBlogInfo, postBlogInfo, updateBlogInfo } from "@/api/blog";
+import {
+  getBlogInfo,
+  postBlogInfo,
+  updateBlogInfo,
+  getBlogInfoCount,
+  deleteBlogInfo,
+} from "@/api/blog";
 import { getTagsInfo } from "@/api/tag";
 import { userinfo, postUserInfo } from "@/api/user";
 // 常量
@@ -253,6 +269,8 @@ export default {
         ],
       },
       picture: "", // 背景图片
+      blogInfoCount: 0, // 博客表数据
+      currentPage: 1, // 当前页
     };
   },
   watch: {
@@ -283,11 +301,17 @@ export default {
   async mounted() {
     let blogInfoResult;
     let tagInfoResult;
+    let blogInfoCount;
     // 获取博客信息 和 标签信息
     try {
+      // 标签数据
       tagInfoResult = await this.getTagsInfoData();
       this.tagInfo = tagInfoResult.tagsInfo;
+      // 博客数据
       blogInfoResult = await this.getBlogInfoData(0);
+      // 博客数据数量
+      blogInfoCount = await this.getBlogInfoDataCount();
+      this.blogInfoCount = blogInfoCount;
       // this.blogInfo = blogInfoResult.blogInfo;
       let changeBlogInfoResult = this.changeBlogTagInfo(
         blogInfoResult.blogInfo
@@ -363,15 +387,41 @@ export default {
       });
       return newBloginfoArr;
     },
-    // 点击事件
+    // 点击编辑事件事件
     handleEdit(index, rowData) {
       this.isShowDrawer = true;
       let currentBlogInfo = JSON.parse(JSON.stringify(rowData));
       this.currentEditBlogInfo = currentBlogInfo;
-      console.log(rowData);
     },
+    // 删除事件
     handleDelete(index, row) {
       console.log(index, row);
+      this.$confirm(
+        `此操作将永久删除 id 为${row.id}的文件, 是否继续?`,
+        "提示",
+        {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+        }
+      )
+        .then(() => {
+          deleteBlogInfo(row.id).then((res) => {
+            if (res.code === 200) {
+              this.$message({
+                type: "success",
+                message: res.data.msg,
+              });
+              this.blogInfo = this.blogInfo.filter(blog => blog.id !== row.id);
+            }
+          });
+        })
+        .catch(() => {
+          /*           this.$message({
+            type: "info",
+            message: "已取消删除",
+          }); */
+        });
     },
     // 提交事件
     submitBlogInfoHandle(formName) {
@@ -411,7 +461,6 @@ export default {
     },
     // 编辑器上传图片
     async mavonEditorImgAdd(pos, file) {
-      console.log(pos, file);
       let name = file.name;
       const fileName = getFileName("blog_pricture", name);
       try {
@@ -475,6 +524,37 @@ export default {
     // mavon Change 事件
     mavonChangeHandle(val, render) {
       this.currentEditBlogInfo.htmlContent = render;
+    },
+
+    // 查询博客表数据条数
+    getBlogInfoDataCount() {
+      return new Promise((resolve, reject) => {
+        getBlogInfoCount()
+          .then((res) => {
+            if (res.code === 200) {
+              resolve(res.data.count);
+            }
+            resolve();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    },
+    // 分页变化事件
+    async currentPageChangehandle(val) {
+      console.log(val);
+      this.currentPage = val;
+      let blogInfoDataByPage;
+      try {
+        blogInfoDataByPage = await getBlogInfoData(10 * (val - 1));
+      } catch (err) {
+        console.log(err);
+      }
+      let changeBlogInfoResult = this.changeBlogTagInfo(
+        blogInfoResult.blogInfo
+      );
+      this.blogInfo = changeBlogInfoResult;
     },
   },
 };
