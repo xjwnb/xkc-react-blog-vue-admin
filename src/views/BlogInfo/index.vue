@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-07 18:07:18
- * @LastEditTime: 2021-02-11 21:59:32
+ * @LastEditTime: 2021-02-15 21:38:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\BlogInfo\index.vue
@@ -129,6 +129,9 @@ import { client } from "@/utils/oss";
 // 文件名称
 import { getFileName } from "@/utils/fileName";
 import toolbars from "@/const/markdown/mavonEditorToolbars";
+import hljs from "highlight.js";
+import "highlight.js/styles/arduino-light.css";
+hljs.highlightAll();
 // vue-editor
 // import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight";
 /* import "highlight.js/styles/github.css";

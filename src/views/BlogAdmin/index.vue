@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-10 21:25:45
- * @LastEditTime: 2021-02-14 10:55:41
+ * @LastEditTime: 2021-02-15 21:37:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\BlogAdmin\index.vue
@@ -204,6 +204,9 @@ import { client } from "@/utils/oss";
 // 文件名称
 import { getFileName } from "@/utils/fileName";
 import toolbars from "@/const/markdown/mavonEditorToolbars";
+import hljs from "highlight.js";
+import "highlight.js/styles/arduino-light.css";
+hljs.highlightAll();
 
 export default {
   name: "BlogAdmin",
