@@ -1,13 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-07 17:22:34
- * @LastEditTime: 2021-02-07 18:36:30
+ * @LastEditTime: 2021-02-12 22:51:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\layout\components\aside.vue
 -->
 <template>
-  <div>
+  <div class="aside-nav">
     <el-menu
       :default-active="$route.path"
       class="el-menu-vertical-demo"
@@ -44,5 +44,21 @@ export default {
   },
 };
 </script>
-<style scoped>
+
+
+<style lang="less" scoped>
+/deep/ .el-menu {
+  position: absolute;
+  width: 200px;
+  bottom: 0;
+  left: 0;
+  top: 60px;
+  background-color: #00152A;
+}
+/deep/ .el-menu-item {
+  color: #ffffff;
+  &:hover {
+    background-color: #35bee7;
+  }
+}
 </style>

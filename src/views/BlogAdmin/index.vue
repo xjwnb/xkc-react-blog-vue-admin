@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-10 21:25:45
- * @LastEditTime: 2021-02-12 19:31:27
+ * @LastEditTime: 2021-02-14 10:55:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\BlogAdmin\index.vue
@@ -412,7 +412,9 @@ export default {
                 type: "success",
                 message: res.data.msg,
               });
-              this.blogInfo = this.blogInfo.filter(blog => blog.id !== row.id);
+              this.blogInfo = this.blogInfo.filter(
+                (blog) => blog.id !== row.id
+              );
             }
           });
         })
@@ -547,14 +549,15 @@ export default {
       this.currentPage = val;
       let blogInfoDataByPage;
       try {
-        blogInfoDataByPage = await getBlogInfoData(10 * (val - 1));
+        blogInfoDataByPage = await this.getBlogInfoData(10 * (val - 1));
+        console.log(blogInfoDataByPage);
+        let changeBlogInfoResult = this.changeBlogTagInfo(
+          blogInfoDataByPage.blogInfo
+        );
+        this.blogInfo = changeBlogInfoResult;
       } catch (err) {
         console.log(err);
       }
-      let changeBlogInfoResult = this.changeBlogTagInfo(
-        blogInfoResult.blogInfo
-      );
-      this.blogInfo = changeBlogInfoResult;
     },
   },
 };
