@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 15:30:59
- * @LastEditTime: 2021-02-12 19:11:42
+ * @LastEditTime: 2021-02-18 20:16:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\plugin\element\index.js
@@ -30,7 +30,10 @@ import {
   Image,
   Drawer,
   Pagination,
-
+  TabPane,
+  Tabs,
+  Dialog,
+  Switch,
 
   // plugin
   Message,
@@ -62,6 +65,10 @@ const element = {
     Vue.use(Image);
     Vue.use(Drawer);
     Vue.use(Pagination);
+    Vue.use(TabPane);
+    Vue.use(Tabs);
+    Vue.use(Dialog);
+    Vue.use(Switch);
 
     // plugin
     Vue.prototype.$message = Message;

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 12:51:52
- * @LastEditTime: 2021-02-17 21:10:40
+ * @LastEditTime: 2021-02-18 16:47:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\router\index.js
@@ -54,6 +54,14 @@ const routes = [
         component: () =>
           import(
             /* webpackChunkName: "AboutInfo" */ "@/views/AboutInfo/index.vue"
+          )
+      },
+      {
+        path: "/linksAdmin",
+        name: "LinksAdmin",
+        component: () =>
+          import(
+            /* webpackChunkName: "LinksAdmin" */ "@/views/LinksAdmin/index.vue"
           )
       }
     ]
