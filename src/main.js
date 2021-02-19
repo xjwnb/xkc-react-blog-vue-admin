@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 12:51:52
- * @LastEditTime: 2021-02-11 00:12:22
+ * @LastEditTime: 2021-02-19 22:40:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\main.js
@@ -37,6 +37,7 @@ Vue.config.productionTip = false;
 
 // 全局路由
 router.beforeEach((to, from, next) => {
+  document.title = to.meta.title + " | vue-blog-admin";
   const toPath = to.path;
   let token = getToken();
   if (toPath !== "/login") {
