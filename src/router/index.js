@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 12:51:52
- * @LastEditTime: 2021-02-19 22:37:15
+ * @LastEditTime: 2021-02-19 23:32:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\router\index.js
@@ -100,7 +100,8 @@ VueRouter.prototype.push = function push(location) {
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
+  base: "/blogAdmin",
   routes
 });
 

@@ -1,24 +1,12 @@
-# xkc-react-blog-vue-admin
+### 技术 
 
-## Project setup
-```
-npm install
-```
+Vue + Element-UI
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### 功能
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- 管理员信息管理
+- 发表功能
+- 标签编辑
+- 博客管理（编辑修改，删除）
+- 关于信息编辑
+- 友链审核（编辑，删除）
