@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-06 12:51:52
- * @LastEditTime: 2021-02-19 23:32:02
+ * @LastEditTime: 2021-04-26 16:15:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\router\index.js
@@ -59,6 +59,15 @@ const routes = [
         },
         component: () =>
           import(/* webpackChunkName: "Tags"*/ "@/views/BlogAdmin/index.vue")
+      },
+      {
+        path: "/life",
+        name: "Life",
+        meta: {
+          title: "生活区"
+        },
+        component: () =>
+          import(/* webpackChunkName: "Life" */ "@/views/Life/index.vue")
       },
       {
         path: "/aboutInfo",

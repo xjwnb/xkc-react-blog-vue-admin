@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-07 17:40:15
- * @LastEditTime: 2021-02-18 16:48:04
+ * @LastEditTime: 2021-04-26 16:17:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\const\Nav\asideNav.js
@@ -26,30 +26,37 @@ export const navbarList = [
     path: "/tags",
     icon: "",
     title: "标签",
-    children: null,
+    children: null
   },
   {
     id: "4",
     path: "/blogAdmin",
     icon: "",
     title: "博客管理",
-    children: null,
+    children: null
   },
   {
     id: "5",
-    path: "/aboutInfo",
+    path: "/life",
     icon: "",
-    title: "关于",
-    children: null,
+    title: "生活区",
+    children: null
   },
   {
     id: "6",
+    path: "/aboutInfo",
+    icon: "",
+    title: "关于",
+    children: null
+  },
+  {
+    id: "7",
     path: "/linksAdmin",
     icon: "",
     title: "友链管理",
-    children: null,
-  },
-/*   {
+    children: null
+  }
+  /*   {
     id: "2",
     path: "/vab",
     icon: "iconfont icon-zujian",
