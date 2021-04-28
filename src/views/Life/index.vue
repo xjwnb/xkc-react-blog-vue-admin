@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-26 16:14:12
- * @LastEditTime: 2021-04-27 16:08:50
+ * @LastEditTime: 2021-04-28 17:59:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \xkc-react-blog-vue-admin\src\views\Life\index.vue
@@ -26,8 +26,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="title" label="标题"> </el-table-column>
-        <el-table-column prop="isTop" label="置顶"> </el-table-column>
-        <el-table-column prop="description_img" label="描述图片">
+        <el-table-column prop="isTop" label="置顶">
           <template slot-scope="scope">
             <el-image
               style="width: 100px; height: 100px"
@@ -36,7 +35,17 @@
             ></el-image>
           </template>
         </el-table-column>
+        <el-table-column prop="description_img" label="描述图片">
+          <template slot-scope="scope">
+            <is-top-status :status="scope.row.isTop" />
+          </template>
+        </el-table-column>
         <el-table-column prop="description_info" label="描述信息">
+          <template slot-scope="scope">
+            <div class="description-info">
+              {{ scope.row.description_info }}
+            </div>
+          </template>
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
@@ -83,12 +92,13 @@ import {
   deleteLifeInfo,
 } from "@/api/life";
 // 组件
-import { Drawer } from "./components";
+import { Drawer, isTopStatus } from "./components";
 
 export default {
   name: "Life",
   components: {
     Drawer,
+    isTopStatus,
   },
   data() {
     return {
@@ -167,7 +177,7 @@ export default {
           this.getList();
         })
         .catch(() => {
-/*           this.$message({
+          /*           this.$message({
             type: "info",
             message: "已取消删除",
           }); */
@@ -228,5 +238,13 @@ export default {
   },
 };
 </script>
-<style scoped>
+
+<style lang="less" scoped>
+.description-info {
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; //这里写的数字是几就是超过几行剩余的显示省略号
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 </style>

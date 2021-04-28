@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-27 11:16:03
- * @LastEditTime: 2021-04-27 15:47:36
+ * @LastEditTime: 2021-04-28 18:14:39
  * @LastEditors: Please set LastEditors
  * @Description: 抽屉组件
  * @FilePath: \xkc-react-blog-vue-admin\src\views\Life\components\Drawer.vue
@@ -64,6 +64,18 @@
             ></el-image>
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
+        </el-form-item>
+        <!-- 置顶 -->
+        <el-form-item label="是否置顶" prop="isTop">
+          <el-select v-model="lifeInfo.isTop" placeholder="请选择置顶状态">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
         </el-form-item>
         <!-- 内容 -->
         <!-- <el-form-item label="内容" prop="content">
@@ -170,6 +182,13 @@ export default {
             trigger: "blur",
           },
         ],
+        isTop: [
+          {
+            required: true,
+            message: "请选择置顶状态",
+            trigger: "blur",
+          },
+        ],
         content: [
           {
             required: true,
@@ -181,6 +200,17 @@ export default {
       // picture;
       picture: "",
       lifeInfo: {},
+      // 选择器
+      options: [
+        {
+          value: 1,
+          label: "置顶",
+        },
+        {
+          value: 0,
+          label: "未置顶",
+        },
+      ],
     };
   },
   watch: {
@@ -289,6 +319,15 @@ export default {
 <style lang="less" scoped>
 .drawer-container {
   padding: 30px;
+}
+
+/deep/ .el-drawer {
+  overflow: auto;
+  overflow-y: scroll;
+}
+/deep/ .el-drawer__body {
+  overflow: auto;
+  /* overflow-x: auto; */
 }
 
 .avatar-uploader {
