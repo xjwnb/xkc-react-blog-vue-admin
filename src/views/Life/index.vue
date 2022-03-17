@@ -12,7 +12,7 @@
     <el-button type="primary" @click="handleAddLifeInfo">添加</el-button>
     <div class="life-table">
       <!-- table 表格 -->
-      <el-table :data="lifeList" style="width: 100%">
+      <el-table v-loading="loading" :data="lifeList" style="width: 100%">
         <el-table-column prop="id" label="id" width="180"> </el-table-column>
         <el-table-column prop="time" label="时间" width="180">
           <template slot-scope="scope">
@@ -114,6 +114,7 @@ export default {
       currentPageNum: 1,
       // 抽屉状态
       status: 0,
+      loading: true,
     };
   },
   async created() {
@@ -128,9 +129,11 @@ export default {
      * 根据 offset 请求获取对应生活区信息
      */
     getLifeList(offset) {
+      this.loading = true;
       return new Promise((resolve) => {
         getLifeInfo(offset).then((res) => {
           if (res.code === 200) {
+            this.loading = false;
             resolve(res);
           }
         });

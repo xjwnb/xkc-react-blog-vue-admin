@@ -38,6 +38,7 @@ import {
   // plugin
   Message,
   MessageBox,
+  Loading
 } from "element-ui";
 
 const element = {
@@ -69,6 +70,10 @@ const element = {
     Vue.use(Tabs);
     Vue.use(Dialog);
     Vue.use(Switch);
+
+    Vue.use(Loading.directive);
+
+    Vue.prototype.$loading = Loading.service;
 
     // plugin
     Vue.prototype.$message = Message;

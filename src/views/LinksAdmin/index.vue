@@ -11,7 +11,7 @@
     <el-tabs v-model="activeName" @tab-click="handleClick">
       <!-- 已通过 -->
       <el-tab-pane label="已通过" name="first">
-        <el-table :data="passLinksInfo" border style="width: 100%">
+        <el-table v-loading="loading" :data="passLinksInfo" border style="width: 100%">
           <el-table-column prop="id" label="id" width="150"> </el-table-column>
           <el-table-column prop="name" label="名称" width="120">
           </el-table-column>
@@ -179,6 +179,7 @@ export default {
           { required: true, message: "LOGO网址不能为空", trigger: "blur" },
         ],
       },
+      loading: true,
     };
   },
   created() {},
@@ -217,10 +218,12 @@ export default {
 
     // 获取友链信息
     getLinksInfoData() {
+      this.loading = true;
       return new Promise((resolve, reject) => {
         getLinksInfo()
           .then((res) => {
             if (res.code === 200) {
+              this.loading = false;
               resolve(res.data.linksInfo);
             }
           })

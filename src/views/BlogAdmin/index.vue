@@ -8,7 +8,7 @@
 -->
 <template>
   <div>
-    <el-table :data="blogInfo" style="width: 100%">
+    <el-table v-loading="loading" :data="blogInfo" style="width: 100%">
       <el-table-column prop="id" label="id" width="70px"> </el-table-column>
       <el-table-column prop="title" label="标题"> </el-table-column>
       <el-table-column prop="name" label="作者"> </el-table-column>
@@ -274,6 +274,7 @@ export default {
       picture: "", // 背景图片
       blogInfoCount: 0, // 博客表数据
       currentPage: 1, // 当前页
+      loading: true,
     };
   },
   watch: {
@@ -327,12 +328,15 @@ export default {
   methods: {
     // 获取博客信息
     async getBlogInfoData(offset = 0) {
+      this.loading = true;
       return new Promise((resolve, reject) => {
         getBlogInfo(offset)
           .then((res) => {
             if (res.code === 200) {
+              this.loading = false;
               resolve(res.data);
             }
+            this.loading = false;
             resolve();
           })
           .catch((err) => {

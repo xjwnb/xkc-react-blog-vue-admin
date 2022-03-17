@@ -16,23 +16,32 @@ export function postTagsInfo(tagsInfo) {
     data: {
       tagsInfo
     }
-  })
+  });
 }
 
 // 获得标签信息
 export function getTagsInfo() {
   return request({
-    url: "/admin/getTagsInfo",
-  })
+    url: "/admin/getTagsInfo"
+  });
 }
 
 // 删除标签信息
-export function deleteTagsInfo(name) {
+export function deleteTagsInfo(id) {
   return request({
     url: "/admin/deleteTagsInfo",
     method: "post",
     data: {
-      name
+      id
     }
-  })
+  });
+}
+
+// 编辑标签信息
+export function updateTagsInfo(data) {
+  return request({
+    url: "/admin/updateTagsInfo",
+    method: "post",
+    data
+  });
 }
